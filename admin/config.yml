@@ -39,6 +39,7 @@ collections:
       - { label: "Autor", name: "author", widget: "string", default: "Redação" }
       - { label: "Data de publicação", name: "date", widget: "datetime" }
       - { label: "Destacar na home?", name: "featured", widget: "boolean", default: false, hint: "Só uma notícia por vez deve ficar marcada como destaque." }
+      - { label: "Foto de capa", name: "imagem", widget: "image", required: false, hint: "Opcional. Se não escolher nenhuma, o card mostra o fundo escuro com as iniciais do título." }
       - { label: "Corpo da matéria", name: "body", widget: "markdown" }
 
   - name: "deals"
