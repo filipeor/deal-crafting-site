@@ -1,0 +1,85 @@
+---
+layout: base.njk
+nav: deals
+title: "Deals"
+description: "League table de operações de M&A, dívida e equity acompanhadas pela deal.crafting."
+permalink: /deals/index.html
+---
+<div class="page-header">
+  <p class="eyebrow">Deals</p>
+  <h1>League table de operações</h1>
+  <p>Todas as operações de M&amp;A, dívida e equity mapeadas pela redação, atualizadas conforme os anúncios do mercado.</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat">
+    <span class="num">{{ dealsStats.volumeNoMes }}</span>
+    <span class="label">Volume no mês</span>
+  </div>
+  <div class="stat">
+    <span class="num">{{ dealsStats.dealsNoMes }}</span>
+    <span class="label">Deals mapeados</span>
+  </div>
+  <div class="stat">
+    <span class="num">{{ dealsStats.ticketMedio }}</span>
+    <span class="label">Ticket médio</span>
+  </div>
+  <div class="stat">
+    <span class="num">{{ dealsStats.setoresAtivos }}</span>
+    <span class="label">Setores ativos</span>
+  </div>
+</div>
+
+<div class="filters" data-filter-group=".deal-row">
+  <button class="filter-btn active" data-cat="todos">Todos</button>
+  <button class="filter-btn" data-cat="ma">M&amp;A</button>
+  <button class="filter-btn" data-cat="divida">Dívida</button>
+  <button class="filter-btn" data-cat="equity">Equity</button>
+</div>
+
+<div class="deals-table-wrap">
+  <table class="deals">
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Empresa</th>
+        <th>Contraparte</th>
+        <th>Tipo</th>
+        <th>Valor</th>
+        <th>Setor</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for deal in dealsList %}
+      <tr class="deal-row" data-cat="{{ deal.tipo }}">
+        <td class="muted-cell">{{ deal.data | dataDiaMes }}</td>
+        <td class="company">{{ deal.empresa }}</td>
+        <td>{{ deal.contraparte }}</td>
+        <td><span class="tag {{ deal.tipo }}">{{ deal.tipoLabel }}</span></td>
+        <td class="value">{{ deal.valor }}</td>
+        <td class="muted-cell">{{ deal.setor }}</td>
+        <td><span class="status-pill {{ deal.statusClass }}">{{ deal.status }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<p class="fictitious-note">Todas as empresas, valores e operações citados nesta página são fictícios e servem apenas para ilustrar o layout.</p>
+
+<section id="newsletter">
+  <div class="newsletter">
+    <div>
+      <h2>Receba a league table completa toda semana.</h2>
+      <p>Um resumo dos deals de M&amp;A, dívida e equity fechados no Brasil, com valores e contrapartes, direto no seu e-mail.</p>
+    </div>
+    <div>
+      <form class="newsletter-form">
+        <input type="email" placeholder="seu.email@empresa.com" required>
+        <button type="submit">Assinar grátis</button>
+      </form>
+      <p class="newsletter-note">Sem spam. Cancele quando quiser.</p>
+    </div>
+  </div>
+</section>

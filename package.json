@@ -1,0 +1,13 @@
+{
+  "name": "dealcrafting-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Site deal.crafting — gerado com Eleventy, editável via Decap CMS.",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

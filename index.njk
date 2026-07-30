@@ -1,0 +1,99 @@
+---
+layout: base.njk
+nav: home
+title: ""
+description: "Notícias e dados sobre fusões e aquisições, emissões de dívida e operações de equity no Brasil."
+permalink: /index.html
+---
+{% set noticiasOrdenadas = collections.noticias %}
+{% set hero = noticiasOrdenadas[0] %}
+{% set sideItems = noticiasOrdenadas.slice(1, 4) %}
+{% set gridItems = noticiasOrdenadas.slice(4, 10) %}
+{% set dealsDaSemana = dealsList.slice(0, 5) %}
+
+<section class="hero">
+  <div class="hero-lead">
+    <p class="eyebrow">{{ hero.data.categoryLabel }} · Destaque do dia</p>
+    <h1><a href="{{ hero.url }}">{{ hero.data.title }}</a></h1>
+    <p class="hero-dek">{{ hero.data.dek }}</p>
+    <div class="byline"><span>Por {{ hero.data.author }}</span><span class="dot"></span><span>{{ hero.data.date | dataCurta }}</span></div>
+  </div>
+  <div class="hero-side">
+    {% for item in sideItems %}
+    <div class="hero-side-item">
+      <span class="tag {{ item.data.category }}">{{ item.data.categoryLabel }}</span>
+      <h3><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
+      <p>{{ item.data.dek }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="noticias">
+  <div class="section-head">
+    <h2>Últimas notícias</h2>
+    <a href="/noticias/">Ver todas →</a>
+  </div>
+  <div class="grid">
+    {% for item in gridItems %}
+    <article class="card">
+      <div class="card-thumb" data-initials="{{ item.data.title | iniciais2 }}"></div>
+      <span class="tag {{ item.data.category }}">{{ item.data.categoryLabel }}</span>
+      <h3><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
+      <p>{{ item.data.dek }}</p>
+      <div class="byline"><span>{{ item.data.author }}</span><span class="dot"></span><span>{{ item.data.date | dataDiaMes }}</span></div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="deals">
+  <div class="section-head">
+    <h2>Deals da semana</h2>
+    <a href="/deals/">Ver league table completa →</a>
+  </div>
+  <div class="deals-table-wrap">
+    <table class="deals">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Empresa</th>
+          <th>Contraparte</th>
+          <th>Tipo</th>
+          <th>Valor</th>
+          <th>Setor</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for deal in dealsDaSemana %}
+        <tr>
+          <td class="muted-cell">{{ deal.data | dataDiaMes }}</td>
+          <td class="company">{{ deal.empresa }}</td>
+          <td>{{ deal.contraparte }}</td>
+          <td><span class="tag {{ deal.tipo }}">{{ deal.tipoLabel }}</span></td>
+          <td class="value">{{ deal.valor }}</td>
+          <td class="muted-cell">{{ deal.setor }}</td>
+          <td><span class="status-pill {{ deal.statusClass }}">{{ deal.status }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="newsletter">
+  <div class="newsletter">
+    <div>
+      <h2>A newsletter de quem fecha negócio.</h2>
+      <p>Todo dia útil, direto na sua caixa de entrada: os deals que movimentaram M&amp;A, dívida e equity no Brasil — sem enrolação.</p>
+    </div>
+    <div>
+      <form class="newsletter-form">
+        <input type="email" placeholder="seu.email@empresa.com" required>
+        <button type="submit">Assinar grátis</button>
+      </form>
+      <p class="newsletter-note">Sem spam. Cancele quando quiser.</p>
+    </div>
+  </div>
+</section>

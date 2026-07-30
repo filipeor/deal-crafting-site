@@ -1,0 +1,35 @@
+---
+layout: base.njk
+nav: noticias
+title: "Notícias"
+description: "Todas as notícias de M&A, dívida e equity cobertas pela deal.crafting."
+permalink: /noticias/index.html
+---
+<div class="page-header">
+  <p class="eyebrow">Notícias</p>
+  <h1>Tudo sobre M&amp;A, dívida e equity</h1>
+  <p>Cobertura diária de operações de fusões e aquisições, emissões de dívida, ofertas de ações e os movimentos de gente por trás dos deals no mercado brasileiro.</p>
+</div>
+
+<div class="filters" data-filter-group=".noticia-item">
+  <button class="filter-btn active" data-cat="todos">Todas</button>
+  <button class="filter-btn" data-cat="ma">M&amp;A</button>
+  <button class="filter-btn" data-cat="divida">Dívida</button>
+  <button class="filter-btn" data-cat="equity">Equity</button>
+  <button class="filter-btn" data-cat="regulacao">Regulação</button>
+  <button class="filter-btn" data-cat="gente">Gente</button>
+</div>
+
+<div class="grid">
+  {% for item in collections.noticias %}
+  <article class="card noticia-item" data-cat="{{ item.data.category }}">
+    <div class="card-thumb" data-initials="{{ item.data.title | iniciais2 }}"></div>
+    <span class="tag {{ item.data.category }}">{{ item.data.categoryLabel }}</span>
+    <h3><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
+    <p>{{ item.data.dek }}</p>
+    <div class="byline"><span>{{ item.data.author }}</span><span class="dot"></span><span>{{ item.data.date | dataDiaMes }}</span></div>
+  </article>
+  {% endfor %}
+</div>
+
+<p class="fictitious-note">Todas as empresas, valores e operações citados nesta página são fictícios e servem apenas para ilustrar o layout.</p>
