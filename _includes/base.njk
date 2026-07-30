@@ -79,5 +79,21 @@
 </footer>
 
 <script src="/assets/site.js"></script>
+
+<!-- Netlify Identity: precisa estar carregado aqui também (não só em /admin)
+     porque os e-mails de convite/redefinição de senha levam pra raiz do site,
+     não direto pro /admin. Sem isso, o link do convite não abre o popup. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", function (user) {
+      if (!user) {
+        window.netlifyIdentity.on("login", function () {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>
