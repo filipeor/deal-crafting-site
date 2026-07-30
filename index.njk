@@ -37,7 +37,11 @@ permalink: /index.html
   <div class="grid">
     {% for item in gridItems %}
     <article class="card">
+      {% if item.data.imagem %}
+      <div class="card-thumb" style="background-image:url('{{ item.data.imagem }}');background-size:cover;background-position:center;"></div>
+      {% else %}
       <div class="card-thumb" data-initials="{{ item.data.title | iniciais2 }}"></div>
+      {% endif %}
       <span class="tag {{ item.data.category }}">{{ item.data.categoryLabel }}</span>
       <h3><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
       <p>{{ item.data.dek }}</p>
