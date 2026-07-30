@@ -1,0 +1,130 @@
+{
+  "deals": [
+    {
+      "data": "2026-07-29",
+      "empresa": "Fortex Logística",
+      "contraparte": "Grupo Altavia",
+      "tipo": "ma",
+      "tipoLabel": "M&A",
+      "valor": "R$ 1,2 bi",
+      "setor": "Logística",
+      "status": "Anunciado",
+      "statusClass": "anunciado",
+      "resumoTicker": "adquire Fortex Logística"
+    },
+    {
+      "data": "2026-07-29",
+      "empresa": "Cerrado Energia",
+      "contraparte": "Mercado de capitais",
+      "tipo": "divida",
+      "tipoLabel": "Dívida",
+      "valor": "R$ 800 mi",
+      "setor": "Energia",
+      "status": "Liquidado",
+      "statusClass": "fechado",
+      "resumoTicker": "emite debênture"
+    },
+    {
+      "data": "2026-07-28",
+      "empresa": "BrisaTech",
+      "contraparte": "Vetta Capital",
+      "tipo": "ma",
+      "tipoLabel": "M&A",
+      "valor": "R$ 310 mi",
+      "setor": "Software",
+      "status": "Aguarda Cade",
+      "statusClass": "pendente",
+      "resumoTicker": "compra fatia da BrisaTech"
+    },
+    {
+      "data": "2026-07-28",
+      "empresa": "Novara Saúde",
+      "contraparte": "Investidores institucionais",
+      "tipo": "equity",
+      "tipoLabel": "Equity",
+      "valor": "R$ 450 mi",
+      "setor": "Saúde",
+      "status": "Precificado",
+      "statusClass": "fechado",
+      "resumoTicker": "follow-on"
+    },
+    {
+      "data": "2026-07-27",
+      "empresa": "Terminal Porto Vale",
+      "contraparte": "Consórcio infra + trading",
+      "tipo": "ma",
+      "tipoLabel": "M&A",
+      "valor": "R$ 940 mi",
+      "setor": "Infraestrutura",
+      "status": "Anunciado",
+      "statusClass": "anunciado",
+      "resumoTicker": "vende ativo portuário"
+    },
+    {
+      "data": "2026-07-27",
+      "empresa": "Litoral Concessões",
+      "contraparte": "Mercado de capitais",
+      "tipo": "divida",
+      "tipoLabel": "Dívida",
+      "valor": "R$ 600 mi",
+      "setor": "Infraestrutura",
+      "status": "Liquidado",
+      "statusClass": "fechado",
+      "resumoTicker": "capta CRA"
+    },
+    {
+      "data": "2026-07-26",
+      "empresa": "Zephyr Agro",
+      "contraparte": "B3 (IPO)",
+      "tipo": "equity",
+      "tipoLabel": "Equity",
+      "valor": "R$ 1,1 bi",
+      "setor": "Agronegócio",
+      "status": "Em análise",
+      "statusClass": "pendente",
+      "resumoTicker": "anuncia IPO na B3"
+    },
+    {
+      "data": "2026-07-26",
+      "empresa": "Tresa Embalagens",
+      "contraparte": "Não divulgado",
+      "tipo": "ma",
+      "tipoLabel": "M&A",
+      "valor": "R$ 275 mi",
+      "setor": "Industrial",
+      "status": "Due diligence",
+      "statusClass": "pendente",
+      "resumoTicker": "negocia venda de unidade"
+    },
+    {
+      "data": "2026-07-25",
+      "empresa": "Mercato Retail",
+      "contraparte": "Mercado de capitais",
+      "tipo": "divida",
+      "tipoLabel": "Dívida",
+      "valor": "R$ 350 mi",
+      "setor": "Varejo",
+      "status": "Liquidado",
+      "statusClass": "fechado",
+      "resumoTicker": "estrutura CRI"
+    },
+    {
+      "data": "2026-07-24",
+      "empresa": "Aurora Logtech",
+      "contraparte": "Investidores institucionais",
+      "tipo": "equity",
+      "tipoLabel": "Equity",
+      "valor": "R$ 220 mi",
+      "setor": "Logística",
+      "status": "Anunciado",
+      "statusClass": "anunciado",
+      "resumoTicker": "avalia follow-on"
+    }
+  ],
+  "stats": {
+    "volumeNoMes": "R$ 12,4 bi",
+    "dealsNoMes": "27",
+    "ticketMedio": "R$ 459 mi",
+    "setoresAtivos": "14"
+  }
+}
