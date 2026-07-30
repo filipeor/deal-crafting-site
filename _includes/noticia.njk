@@ -1,0 +1,13 @@
+---
+layout: base.njk
+---
+<article class="article-full">
+  <p class="eyebrow">{{ categoryLabel }}</p>
+  <h1>{{ title }}</h1>
+  <p class="hero-dek">{{ dek }}</p>
+  <div class="byline"><span>Por {{ author }}</span><span class="dot"></span><span>{{ date | dataCurta }}</span></div>
+  <div class="article-body">
+    {{ content | safe }}
+  </div>
+  <p style="margin-top:32px;"><a href="/noticias/" style="font-weight:700;color:var(--orange-dark);">← Voltar para notícias</a></p>
+</article>

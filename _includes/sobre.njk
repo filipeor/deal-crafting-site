@@ -1,0 +1,63 @@
+---
+layout: base.njk
+permalink: /sobre/index.html
+description: "Quem somos e o que cobrimos na deal.crafting."
+---
+<div class="page-header">
+  <p class="eyebrow">Sobre</p>
+  <h1>{{ title }}</h1>
+  <p>{{ intro }}</p>
+</div>
+
+<div class="about-block">
+  {{ content | safe }}
+</div>
+
+<div class="about-grid">
+  <div class="about-card">
+    <span class="num">M&amp;A</span>
+    <p>Fusões, aquisições, cisões e reestruturações societárias — do anúncio ao fechamento.</p>
+  </div>
+  <div class="about-card">
+    <span class="num">Dívida</span>
+    <p>Debêntures, CRAs, CRIs e emissões no mercado de capitais local e internacional.</p>
+  </div>
+  <div class="about-card">
+    <span class="num">Equity</span>
+    <p>IPOs, follow-ons, aportes de private equity e venture capital.</p>
+  </div>
+</div>
+
+<div class="section-head">
+  <h2>Fale com a redação</h2>
+</div>
+<div class="contact-row">
+  <div>
+    <h4>Pauta / redação</h4>
+    <a href="mailto:{{ emailRedacao }}">{{ emailRedacao }}</a>
+  </div>
+  <div>
+    <h4>Comercial / mídia kit</h4>
+    <a href="mailto:{{ emailComercial }}">{{ emailComercial }}</a>
+  </div>
+  <div>
+    <h4>Sede</h4>
+    <span>{{ sede }}</span>
+  </div>
+</div>
+
+<section id="newsletter" style="margin-top:48px;">
+  <div class="newsletter">
+    <div>
+      <h2>Assine a newsletter deal.crafting</h2>
+      <p>Os deals de M&amp;A, dívida e equity que movimentaram o mercado brasileiro, todo dia útil, direto no seu e-mail.</p>
+    </div>
+    <div>
+      <form class="newsletter-form">
+        <input type="email" placeholder="seu.email@empresa.com" required>
+        <button type="submit">Assinar grátis</button>
+      </form>
+      <p class="newsletter-note">Sem spam. Cancele quando quiser.</p>
+    </div>
+  </div>
+</section>
