@@ -27,15 +27,29 @@
       <button class="nav-toggle" aria-label="Abrir menu">☰</button>
     </div>
   </div>
-  <div class="ticker">
-    <div class="ticker-track">
-      {% for i in [0, 1] %}
-        {% for deal in dealsList.slice(0, 8) %}
-          <span class="ticker-item"><span class="ticker-tag {{ deal.tipo }}">{{ deal.tipoLabel }}</span><b>{{ deal.empresa }}</b> {{ deal.resumoTicker }} <span class="ticker-val">{{ deal.valor }}</span></span>
-          <span class="ticker-dot">•</span>
-        {% endfor %}
-      {% endfor %}
+  <div class="macro-bar" id="macro-bar">
+    <div class="macro-item" data-metric="usd">
+      <span class="macro-label">Dólar</span>
+      <span class="macro-value">--</span>
+      <span class="macro-change"></span>
     </div>
+    <span class="macro-sep">•</span>
+    <div class="macro-item" data-metric="eur">
+      <span class="macro-label">Euro</span>
+      <span class="macro-value">--</span>
+      <span class="macro-change"></span>
+    </div>
+    <span class="macro-sep">•</span>
+    <div class="macro-item" data-metric="selic">
+      <span class="macro-label">Selic</span>
+      <span class="macro-value">--</span>
+    </div>
+    <span class="macro-sep">•</span>
+    <div class="macro-item" data-metric="ipca">
+      <span class="macro-label">IPCA 12m</span>
+      <span class="macro-value">--</span>
+    </div>
+    <span class="macro-updated" id="macro-updated"></span>
   </div>
 </header>
 
