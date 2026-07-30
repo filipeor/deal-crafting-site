@@ -1,0 +1,106 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Depois de conectar Netlify Identity + Git Gateway, o Decap CMS grava
+# direto neste repositório — sem precisar de servidor próprio.
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "noticias"
+    label: "Notícias"
+    label_singular: "Notícia"
+    folder: "content/noticias"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{categoryLabel}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Linha de apoio (dek)", name: "dek", widget: "text", hint: "Um resumo curto de 1-2 frases, aparece abaixo do título." }
+      - label: "Categoria"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "M&A", value: "ma" }
+          - { label: "Dívida", value: "divida" }
+          - { label: "Equity", value: "equity" }
+          - { label: "Regulação", value: "regulacao" }
+          - { label: "Gente", value: "gente" }
+          - { label: "Mercado", value: "mercado" }
+      - label: "Rótulo da categoria (como aparece na tag)"
+        name: "categoryLabel"
+        widget: "select"
+        options: ["M&A", "Dívida", "Equity", "Regulação", "Gente", "Mercado"]
+      - { label: "Autor", name: "author", widget: "string", default: "Redação" }
+      - { label: "Data de publicação", name: "date", widget: "datetime" }
+      - { label: "Destacar na home?", name: "featured", widget: "boolean", default: false, hint: "Só uma notícia por vez deve ficar marcada como destaque." }
+      - { label: "Corpo da matéria", name: "body", widget: "markdown" }
+
+  - name: "deals"
+    label: "Deals"
+    editor:
+      preview: false
+    files:
+      - label: "League table de deals"
+        name: "deals"
+        file: "_data/deals.json"
+        fields:
+          - label: "Números do topo da página Deals"
+            name: "stats"
+            widget: "object"
+            fields:
+              - { label: "Volume no mês", name: "volumeNoMes", widget: "string" }
+              - { label: "Deals mapeados", name: "dealsNoMes", widget: "string" }
+              - { label: "Ticket médio", name: "ticketMedio", widget: "string" }
+              - { label: "Setores ativos", name: "setoresAtivos", widget: "string" }
+          - label: "Deals"
+            name: "deals"
+            widget: "list"
+            summary: "{{empresa}} — {{valor}} ({{tipoLabel}})"
+            fields:
+              - { label: "Data", name: "data", widget: "date" }
+              - { label: "Empresa", name: "empresa", widget: "string" }
+              - { label: "Contraparte", name: "contraparte", widget: "string" }
+              - label: "Tipo"
+                name: "tipo"
+                widget: "select"
+                options:
+                  - { label: "M&A", value: "ma" }
+                  - { label: "Dívida", value: "divida" }
+                  - { label: "Equity", value: "equity" }
+              - label: "Rótulo do tipo"
+                name: "tipoLabel"
+                widget: "select"
+                options: ["M&A", "Dívida", "Equity"]
+              - { label: "Valor", name: "valor", widget: "string", hint: "Ex: R$ 450 mi" }
+              - { label: "Setor", name: "setor", widget: "string" }
+              - { label: "Status (texto exibido)", name: "status", widget: "string", hint: "Ex: Anunciado, Liquidado, Aguarda Cade" }
+              - label: "Cor do status"
+                name: "statusClass"
+                widget: "select"
+                options:
+                  - { label: "Verde (fechado/concluído)", value: "fechado" }
+                  - { label: "Laranja (anunciado/em andamento)", value: "anunciado" }
+                  - { label: "Cinza (pendente)", value: "pendente" }
+              - { label: "Resumo curto pro ticker do topo", name: "resumoTicker", widget: "string", hint: "Ex: adquire Fortex Logística" }
+
+  - name: "pages"
+    label: "Páginas"
+    editor:
+      preview: false
+    files:
+      - label: "Sobre"
+        name: "sobre"
+        file: "content/pages/sobre.md"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Texto de introdução", name: "intro", widget: "text" }
+          - { label: "Corpo (parágrafos)", name: "body", widget: "markdown" }
+          - { label: "E-mail da redação", name: "emailRedacao", widget: "string" }
+          - { label: "E-mail comercial", name: "emailComercial", widget: "string" }
+          - { label: "Sede", name: "sede", widget: "string" }
