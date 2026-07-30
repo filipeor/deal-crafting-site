@@ -134,62 +134,49 @@ img{ max-width:100%; display:block; }
   .nav-toggle{ display:inline-block; }
 }
 
-/* ---------- Ticker ---------- */
+/* ---------- Barra macro (câmbio, Selic, IPCA) ---------- */
 
-.ticker{
+.macro-bar{
   background: var(--dark-2);
   border-bottom: 1px solid var(--dark-line);
-  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap: 22px;
+  padding: 9px 24px;
+}
+.macro-item{
+  display:inline-flex;
+  align-items:baseline;
+  gap:6px;
   white-space:nowrap;
-  position:relative;
-}
-.ticker::before,
-.ticker::after{
-  content:"";
-  position:absolute;
-  top:0; bottom:0;
-  width:60px;
-  z-index:2;
-  pointer-events:none;
-}
-.ticker::before{ left:0; background: linear-gradient(90deg, var(--dark-2), transparent); }
-.ticker::after{ right:0; background: linear-gradient(270deg, var(--dark-2), transparent); }
-
-.ticker-track{
-  display:inline-flex;
-  align-items:center;
-  gap: 36px;
-  padding: 9px 0;
-  animation: ticker-scroll 42s linear infinite;
-  will-change: transform;
-}
-.ticker:hover .ticker-track{ animation-play-state: paused; }
-
-@keyframes ticker-scroll{
-  from{ transform: translateX(0); }
-  to{ transform: translateX(-50%); }
-}
-
-.ticker-item{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
   font-size: 12.5px;
-  color: rgba(255,255,255,0.85);
 }
-.ticker-item b{ color:#fff; font-weight:700; }
-.ticker-tag{
+.macro-label{
   font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  padding: 2px 6px;
-  border-radius: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
 }
-.ticker-tag.ma{ background: rgba(226,152,79,0.18); color: var(--orange); }
-.ticker-tag.divida{ background: rgba(140,170,220,0.18); color:#9DBBEA; }
-.ticker-tag.equity{ background: rgba(140,200,160,0.18); color:#9BD3AE; }
-.ticker-val{ color: var(--orange); font-weight:700; }
-.ticker-dot{ color: rgba(255,255,255,0.25); }
+.macro-value{
+  color:#fff;
+  font-weight:700;
+}
+.macro-change{ font-size: 11.5px; font-weight:700; }
+.macro-change.up{ color: var(--red); }
+.macro-change.down{ color: var(--green); }
+.macro-sep{ color: rgba(255,255,255,0.25); }
+.macro-updated{
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.35);
+  white-space:nowrap;
+}
+@media (max-width: 700px){
+  .macro-updated{ display:none; }
+  .macro-bar{ gap:14px 18px; }
+}
 
 /* ---------- Tags ---------- */
 

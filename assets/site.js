@@ -55,4 +55,64 @@ document.addEventListener("DOMContentLoaded", function () {
       form.reset();
     });
   });
+
+  // Barra macro (Dólar, Euro, Selic, IPCA) — dados ao vivo
+  if (document.getElementById("macro-bar")) {
+    atualizarMacro();
+    setInterval(atualizarMacro, 5 * 60 * 1000); // atualiza a cada 5 minutos
+  }
 });
+
+function fmtNumeroBR(valor, casas) {
+  var n = Number(valor);
+  if (isNaN(n)) return "--";
+  return n.toLocaleString("pt-BR", { minimumFractionDigits: casas, maximumFractionDigits: casas });
+}
+
+function setMacroItem(metrica, textoValor, variacaoPct) {
+  var item = document.querySelector('.macro-item[data-metric="' + metrica + '"]');
+  if (!item) return;
+  var valorEl = item.querySelector(".macro-value");
+  if (valorEl) valorEl.textContent = textoValor;
+  if (typeof variacaoPct === "number" && !isNaN(variacaoPct)) {
+    var changeEl = item.querySelector(".macro-change");
+    if (changeEl) {
+      var subiu = variacaoPct >= 0;
+      changeEl.textContent = (subiu ? "▲ " : "▼ ") + fmtNumeroBR(Math.abs(variacaoPct), 2) + "%";
+      changeEl.className = "macro-change " + (subiu ? "up" : "down");
+    }
+  }
+}
+
+function atualizarMacro() {
+  // Câmbio — AwesomeAPI (cotação com poucos minutos de atraso)
+  fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL")
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d.USDBRL) setMacroItem("usd", "R$ " + fmtNumeroBR(d.USDBRL.bid, 2), Number(d.USDBRL.pctChange));
+      if (d.EURBRL) setMacroItem("eur", "R$ " + fmtNumeroBR(d.EURBRL.bid, 2), Number(d.EURBRL.pctChange));
+    })
+    .catch(function () { /* mantém o valor anterior/placeholder */ });
+
+  // Selic — Banco Central (série 432, meta Selic definida pelo Copom)
+  fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/1?formato=json")
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d && d[0]) setMacroItem("selic", fmtNumeroBR(d[0].valor, 2) + "% a.a.");
+    })
+    .catch(function () {});
+
+  // IPCA acumulado 12 meses — Banco Central (série 13522)
+  fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.13522/dados/ultimos/1?formato=json")
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d && d[0]) setMacroItem("ipca", fmtNumeroBR(d[0].valor, 2) + "%");
+    })
+    .catch(function () {});
+
+  var atualizado = document.getElementById("macro-updated");
+  if (atualizado) {
+    var agora = new Date();
+    atualizado.textContent = "Atualizado " + agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  }
+}
