@@ -1,7 +1,6 @@
 ---
-title: Altavia fecha aquisição da Fortex Logística por R$ 1,2 bilhão
-dek: Operação inclui earn-out de três anos e marca a entrada do fundo
-  controlador em transporte rodoviário de longa distância.
+title: Controladora da NYSE faz M&A de US$ 5,7 bilhões
+dek: Operação inclui aquisição de 100% das ações da empresa MarketAxess Holdings
 category: ma
 categoryLabel: M&A
 author: Por Filipe Orlandi
