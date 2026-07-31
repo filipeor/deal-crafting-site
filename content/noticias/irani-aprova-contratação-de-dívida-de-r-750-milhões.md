@@ -1,6 +1,6 @@
 ---
 title: Irani aprova contratação de dívida de R$ 750 milhões
-dek: A empresa de papel e celulosa melhora o perfil do passivo e libera recursos
+dek: A empresa de papel e celulose melhora o perfil do passivo e libera recursos
   para investimentos estratégicos
 category: divida
 categoryLabel: Dívida
