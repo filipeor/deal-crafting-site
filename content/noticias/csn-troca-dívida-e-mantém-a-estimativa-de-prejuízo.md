@@ -4,7 +4,7 @@ dek: A siderúrgica aprova troca de títulos de dívida, elevando o custo médio
   apesar do alongamento do perfil do passivo. O montante trocado é na ordem de
   US$ 1,3 bilhão
 category: divida
-categoryLabel: Mercado
+categoryLabel: Dívida
 author: Redação
 date: 2026-07-31T09:56:00.000-03:00
 featured: false
